@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>二维码</title>
+</head>
+<script src="jquery-1.11.0.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+$("#myform").submit(function(){
+	var mydate=$("#mydate").val();
+	if(mydate==""){
+		$("#mydate").focus();
+		$("#result").text("请输入日期！");	
+		return false;
+	}else if(isNaN(mydate) || mydate.length!=4){
+		$("#mydate").focus();
+		$("#result").text("请输入正确格式！");
+		return false;
+	}else{
+		return true;
+	}
+});
+  
+});
+</script>		
+<body>
+<form action="do.php" method="post" id="myform" enctype="multipart/form-data">
+使用日期获取二维码(日期选错就无法使用了~)
+<input type="text" id="mydate" name="mydate"/>格式:0315(3月15号)
+<input type="submit" value="获取二维码" />
+</form>
+<p id="result" style="color:red;"></p>
+</body>
+</html>
